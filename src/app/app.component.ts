@@ -11,11 +11,18 @@ export class AppComponent {
   data: Array<any>
   totalRecords:number
   page:string
-  term: any
+  searchText: string
+  mydata: Array<any>
+
 
   constructor(private movie:MoviesService){
     this.data=new Array<any>()
+    this.searchText=''
   }
+
+  ngOnInit() {
+    this.getMovies();
+}
 
   getMovies(){
     this.movie.getData().subscribe((data)=>{
@@ -23,6 +30,7 @@ export class AppComponent {
       this.data=data.results
     console.log(this.data)
       this.totalRecords=data.results.length
+      return this.data
     
       
   

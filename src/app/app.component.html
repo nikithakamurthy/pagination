@@ -8,22 +8,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>pagination</title>
+    
   </head>
-  <body>
-    <button (click)=getMovies()>get movies</button>
-   <!-- Search : <input type="text" placeholder="Search" ng-model="searchText"/> -->
+  <body >
+   
+    
+   Search : <input type="text" placeholder="Search" [(ngModel)]="searchText"/>
 
-    <div class="card-group" *ngFor="let user of data | paginate: { id: 'listing_pagination',
-    itemsPerPage: 10,
-    currentPage: page,
-    totalItems: totalRecords }" >
-      <div class="card">
+
+    <div class="card-deck">
+      <div class="card" *ngFor="let user of data |filter : searchText | paginate: { id: 'listing_pagination',
+      itemsPerPage: 4,
+      currentPage: page,
+      totalItems: totalRecords }">
+        <img src='https://image.tmdb.org/t/p/original/{{user.poster_path}}' class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{user.name.first}}</h5>
-          <p class="card-text">{{user.gender}}</p>
-          <p class="card-text"><small class="text-muted">{{user.email}}</small></p>
+          <h5 class="card-title">{{user.vote_average}}</h5>
+          <p class="card-text">
+            {{user.title}}
+          </p>
         </div>
-      </div> 
+      </div>
     </div>
 
 
