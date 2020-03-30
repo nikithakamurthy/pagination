@@ -11,9 +11,6 @@ export class MoviesService {
   getData(): Observable<any>{
     const url = "https://api.themoviedb.org/3/movie/top_rated?api_key=be168ad664a6c9d493f2831167e6816f"
     return this.http.get<any>(url)
-
   }
-
-
 }
 
