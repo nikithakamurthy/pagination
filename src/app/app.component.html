@@ -12,15 +12,15 @@
      Search : <input type="text" placeholder="Type to Search" [(ngModel)]="searchText"/>
 
     <div class="card-deck">
-      <div class="card" *ngFor="let user of data |filter : searchText | paginate: { id: 'listing_pagination',
+      <div class="card" *ngFor="let movie of data |filter : searchText | paginate: { id: 'listing_pagination',
       itemsPerPage: 4,
       currentPage: page,
       totalItems: totalRecords }">
-        <img src='https://image.tmdb.org/t/p/original/{{user.poster_path}}' class="card-img-top" alt="...">
+        <img src='https://image.tmdb.org/t/p/original/{{movie.poster_path}}' class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{user.vote_average}}</h5>
+          <h5 class="card-title">{{movie.vote_average}}</h5>
           <p class="card-text">
-            {{user.title}}
+            {{movie.title}}
           </p>
         </div>
       </div>
