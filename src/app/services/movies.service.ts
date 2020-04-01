@@ -6,10 +6,14 @@ import { Observable } from 'rxjs';
 })
 export class MoviesService {
 
-  constructor(private http: HttpClient) { }
+  pageNumber:string
+  constructor(private http: HttpClient) {
+    this.pageNumber=''
+   }
 
-  getData(): Observable<any>{
-    const url = "https://api.themoviedb.org/3/movie/top_rated?api_key=be168ad664a6c9d493f2831167e6816f"
+  getData(pageNumber:string): Observable<any>{
+    this.pageNumber=pageNumber
+    const url = "https://api.themoviedb.org/3/movie/top_rated?api_key=be168ad664a6c9d493f2831167e6816f&page="+this.pageNumber
     return this.http.get<any>(url)
   }
 }

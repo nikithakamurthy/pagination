@@ -14,8 +14,8 @@
     <div class="card-deck">
       <div class="card" *ngFor="let movie of data |filter : searchText | paginate: { id: 'listing_pagination',
       itemsPerPage: 4,
-      currentPage: page,
-      totalItems: totalRecords }">
+      currentPage: page
+       }">
         <img src='https://image.tmdb.org/t/p/original/{{movie.poster_path}}' class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{movie.vote_average}}</h5>
@@ -27,7 +27,7 @@
     </div>
 
     <div>
-      <pagination-controls  id="listing_pagination" maxSize="10" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+      <pagination-controls  id="listing_pagination" maxSize="10" directionLinks="true" (pageChange)="getMovies($event)"></pagination-controls>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

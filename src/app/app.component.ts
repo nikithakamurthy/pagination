@@ -12,20 +12,25 @@ export class AppComponent {
   totalRecords:number
   page:string
   searchText: string
+  pageNumber: string
+  
 
   constructor(private movie:MoviesService){
     this.data=new Array<any>()
     this.searchText=''
+    this.pageNumber=''
   }
 
   ngOnInit() {
-    this.getMovies();
+    this.getMovies('1');
   }
 
-  getMovies(){
-    this.movie.getData().subscribe((data)=>{
+  getMovies(pageNumber:string){
+    this.page=pageNumber
+    this.pageNumber=pageNumber
+    this.movie.getData(this.pageNumber).subscribe((data)=>{
       this.data=data.results
-      this.totalRecords=data.results.length   
+      this.totalRecords=data.results.length  
     })
   }
 }
