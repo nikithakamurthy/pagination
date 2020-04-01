@@ -13,7 +13,7 @@ export class SearchService {
 
   getSearchData(searchText:string): Observable<any>{
     this.searchText=searchText
-    const url = "http://api.themoviedb.org/3/search/movie?api_key=be168ad664a6c9d493f2831167e6816f&query="+this.searchText
+    const url = "https://api.themoviedb.org/3/search/movie?api_key=be168ad664a6c9d493f2831167e6816f&query="+this.searchText
     return this.http.get<any>(url)
   }
 }
